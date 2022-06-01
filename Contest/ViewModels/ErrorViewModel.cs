@@ -1,6 +1,6 @@
 using System;
 
-namespace Contest.Models
+namespace Contest.ViewModels
 {
     public class ErrorViewModel
     {

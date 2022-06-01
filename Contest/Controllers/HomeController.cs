@@ -1,4 +1,4 @@
-﻿using Contest.Models;
+﻿using Contest.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,12 +20,27 @@ namespace Contest.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Form()
+        {
+            return View(new HomeViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Form(HomeViewModel model)
+        {
+            System.IO.File.WriteAllText(@"e:\temp.cs", model.Text);
+            Process.Start(@"C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe", @"/t:exe temp.cs");
+            Process.Start(@"temp.exe");
+            Debug.WriteLine(model.Text);
+            return View("Success");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

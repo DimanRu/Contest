@@ -1,0 +1,16 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">Login Form</h1>
+    <div>
+        <form asp-controller="login" asp-action="login" metnod="post">            
+            <textarea asp-for="Login" cols="120" rows="30"></textarea>
+            <textarea asp-for="Password" cols="120" rows="30"></textarea>
+            <br />
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>

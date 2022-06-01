@@ -1,0 +1,12 @@
+﻿@model LaborViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <form asp-controller="home" asp-action="form" metnod="post">
+        <textarea asp-for="Text" cols="120" rows="30"></textarea>
+        <br />
+        <button type="submit">Send</button>
+    </form>
+</div>
