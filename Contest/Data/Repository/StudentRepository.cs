@@ -1,4 +1,5 @@
-﻿using Contest.Data.Models;
+﻿using Contest.Data.Interfaces;
+using Contest.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Contest.Data.Repository
 {
-    public class StudentRepository
+    public class StudentRepository : IStudent
     {
         private readonly AppDBContent _appDBContent;
 
@@ -16,6 +17,21 @@ namespace Contest.Data.Repository
             _appDBContent = appDBContent;
         }
 
-        public IEnumerable<Student> Students => _appDBContent.Student.Include(s => s.Group);
+        public IEnumerable<Student> Students => _appDBContent.Students;
+
+        public void AddStudent(Student student)
+        {
+            _appDBContent.Students.Add(student);
+            _appDBContent.SaveChanges();
+        }
+        public void SaveChanges()
+        {
+            _appDBContent.SaveChanges();
+        }
+        public void Delete(Student student)
+        {
+            _appDBContent.Students.Remove(student);
+            _appDBContent.SaveChanges();
+        }
     }
 }

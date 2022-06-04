@@ -1,0 +1,35 @@
+﻿@model LaborsViewModel
+
+<div>
+    <h1 class="display-4">Список всех заданий</h1>
+    <div>
+        <div>
+            <a type="button" class="btn btn-outline-primary" asp-controller="Labors" asp-action="Edit">Добавить</a>
+        </div>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th># id</th>
+                    <th>Название</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var labor in Model.Labors)
+                    {
+                        <tr>
+                            <th scope="row">@labor.Id</th>
+                            <td class="align-content-center">@labor.Title</td>
+                            <td>
+                                <a class="btn btn-outline-secondary" asp-controller="Labors" asp-action="Edit" asp-route-id="@labor.Id">Редактировать</a>
+                                <a class="btn btn-outline-danger" asp-controller="Labors" asp-action="Delete" asp-route-id="@labor.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

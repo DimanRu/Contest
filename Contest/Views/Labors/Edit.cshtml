@@ -1,0 +1,25 @@
+﻿@using Contest.Data.Models
+@model Labor
+
+<div>
+    <h1 class="display-4">Добавить новое задание...</h1>
+    <div>
+        <form asp-controller="Labors" asp-action="Save" metnod="post">
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group">
+                <label for="formGroupExampleInput">Название</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Введите название..." asp-for="Title">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Описание</label>
+                <textarea class="form-control" id="formGroupExampleInput" asp-for="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Код</label>
+                <textarea class="form-control" id="formGroupExampleInput" asp-for="Code"></textarea>
+            </div>
+            <br />
+            <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+    </div>
+</div>

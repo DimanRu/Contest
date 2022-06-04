@@ -14,6 +14,7 @@ namespace Contest.Data
 
         }
 
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Labor> Labors { get; set; }
     }
 }

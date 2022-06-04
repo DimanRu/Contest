@@ -1,0 +1,37 @@
+﻿@model StudentViewModel
+
+<div>
+    <h1 class="display-4">Список всех студентов</h1>
+    <div>
+        <div>
+            <a type="button" class="btn btn-outline-primary" asp-controller="Student" asp-action="Edit">Добавить</a>
+        </div>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th># id</th>
+                    <th>ФИО</th>
+                    <th>Номер группы</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var student in Model.Students)
+                    {
+                        <tr>
+                            <th scope="row">@student.Id</th>
+                            <td class="align-content-center">@student.Name</td>
+                            <td>@student.Group</td>
+                            <td>
+                                <a class="btn btn-outline-secondary" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">Редактировать</a>
+                                <a class="btn btn-outline-danger" asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

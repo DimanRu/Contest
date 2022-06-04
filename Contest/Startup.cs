@@ -1,4 +1,6 @@
 using Contest.Data;
+using Contest.Data.Interfaces;
+using Contest.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,8 @@ namespace Contest
         {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddTransient<IStudent, StudentRepository>();
+            services.AddTransient<ILabor, LaborRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
